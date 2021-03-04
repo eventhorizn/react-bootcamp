@@ -37,3 +37,75 @@
 1. Use Development Server
 
 ## Creating a React App
+
+1. Run the below function to create the app
+   ```
+   npx create-react-app my-app
+   npm start
+   ```
+1. Two ways of creating a component
+1. Class Extends Component
+   ```js
+   class App extends Component {
+   	render() {
+   		return (
+   			<div className="App">
+   				<h1>Hi, I'm a react app</h1>
+   			</div>
+   		);
+   	}
+   }
+   ```
+   - Has state and lifecycle hooks
+1. Function
+   ```js
+   function App() {
+   	return (
+   		<div className="App">
+   			<h1>Hi, I'm a react app</h1>
+   		</div>
+   	);
+   }
+   ```
+   - Can use hooks
+1. In the `index.js` class, you'll see this line
+   ```js
+   ReactDOM.render(
+   	<React.StrictMode>
+   		<App />
+   	</React.StrictMode>,
+   	document.getElementById('root')
+   );
+   ```
+   - With react, we should only use this render function **once**
+   - App would be considered our 'root' component
+   - We would nest other componentes in root and each other
+
+## Understanding JSX
+
+1. Old school, crappy way w/o jsx
+
+   ```js
+   return React.createElement(
+   	'div',
+   	{ className: 'App' },
+   	React.createElement('h1', null, `Hi, I'm a react app`)
+   );
+   ```
+
+1. JSX allows us to pretend it's html
+
+   ```js
+   return (
+   	<div className="App">
+   		<h1>Hi, I'm a react app</h1>
+   	</div>
+   );
+   ```
+
+   - Looks like html, isn't html (it's js)
+
+1. Restrictions
+   - Can't use `class` since it's a reserved js word
+     - Must use `className`
+   - Must have one root element
