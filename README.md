@@ -44,7 +44,7 @@
    npm start
    ```
 1. Two ways of creating a component
-1. Class Extends Component
+1. Class Based
    ```js
    class App extends Component {
    	render() {
@@ -57,7 +57,7 @@
    }
    ```
    - Has state and lifecycle hooks
-1. Function
+1. Functional (stateless)
    ```js
    function App() {
    	return (
@@ -68,6 +68,7 @@
    }
    ```
    - Can use hooks
+   - Use this as often as you can
 1. In the `index.js` class, you'll see this line
    ```js
    ReactDOM.render(
@@ -84,7 +85,6 @@
 ## Understanding JSX
 
 1. Old school, crappy way w/o jsx
-
    ```js
    return React.createElement(
    	'div',
@@ -92,9 +92,7 @@
    	React.createElement('h1', null, `Hi, I'm a react app`)
    );
    ```
-
 1. JSX allows us to pretend it's html
-
    ```js
    return (
    	<div className="App">
@@ -102,10 +100,51 @@
    	</div>
    );
    ```
-
    - Looks like html, isn't html (it's js)
-
 1. Restrictions
    - Can't use `class` since it's a reserved js word
      - Must use `className`
    - Must have one root element
+1. You can input javascript into html code like so
+   ```jsx
+   return (
+   	<p>I'm a Person and I am {Math.floor(Math.random() * 30)} years old!</p>
+   );
+   ```
+   - Wrap in {}
+   - Limited to single line js statements (which can be functions)
+1. We should really use Props
+   ```js
+   const person = (props) => {
+   	return (
+   		<p>
+   			I'm {props.name} and I am {props.age} years old!
+   		</p>
+   	);
+   };
+   ```
+   ```js
+   <Person name="Gary" age="28" />
+   <Person name="Row" age="1" />
+   <Person name="Katie" age="30" />
+   ```
+1. Props children
+   ```js
+   const person = (props) => {
+   	return (
+   		<div>
+   			<p>
+   				I'm {props.name} and I am {props.age} years old!
+   			</p>
+   			<p>{props.children}</p>
+   		</div>
+   	);
+   };
+   ```
+   ```
+   <Person name="Gary" age="28">
+      My Hobbies: Racing
+   </Person>
+   ```
+   - Anything in between your component tags is 'children'
+   - It can be complex html!
