@@ -113,7 +113,10 @@
    ```
    - Wrap in {}
    - Limited to single line js statements (which can be functions)
-1. We should really use Props
+
+## React Props
+
+1. What are props?
    ```js
    const person = (props) => {
    	return (
@@ -146,5 +149,72 @@
       My Hobbies: Racing
    </Person>
    ```
-   - Anything in between your component tags is 'children'
-   - It can be complex html!
+1. Anything in between your component tags is 'children'
+1. It can be complex html!
+
+## State
+
+1. State is a special property of a component class
+
+   - Functions use 'hooks' to manage state
+
+   ```js
+   state = {
+   	persons: [
+   		{ name: 'Gary', age: 31 },
+   		{ Name: 'Rowe', age: 1 },
+   		{ name: 'Katie', age: 28 },
+   	],
+   };
+
+   render() {
+   	return (
+   		<div className="App">
+   			<h1>Hi, I'm a react app</h1>
+   			<button>Switch Name</button>
+   			<Person
+   				name={this.state.persons[0].name}
+   				age={this.state.persons[0].age}
+   			>
+   				My Hobbies: Racing
+   			</Person>
+   			<Person
+   				name={this.state.persons[1].name}
+   				age={this.state.persons[1].age}
+   			/>
+   			<Person
+   				name={this.state.persons[2].name}
+   				age={this.state.persons[2].age}
+   			/>
+   		</div>
+   	);
+   ```
+
+1. When you update props it triggers an automatic re-rendering
+1. When updating state, use setState instead of accessing values directly
+   - Merges new values w/ original state
+
+## Event Listeners
+
+1. JSX event listeners
+   - [Supported Events](https://reactjs.org/docs/events.html#supported-events)
+   - The key is that event listeners don't look the same as regular JS
+   ```js
+   <button onClick={this.switchNameHandler}>Switch Name</button>
+   ```
+   - onClick vs onclick
+   - Notice we aren't calling the function w/ parens
+1. We are using the above event listener to demonstrate how state auto re-renders a react component
+   ```js
+   switchNameHandler = () => {
+   	// DON'T do this
+   	//this.state.persons[0].name = 'Hello';
+   	this.setState({
+   		persons: [
+   			{ name: 'GArrrrry', age: 31 },
+   			{ Name: 'Rowe', age: 1 },
+   			{ name: 'Katie', age: 35 },
+   		],
+   	});
+   };
+   ```
