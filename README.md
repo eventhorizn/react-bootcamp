@@ -193,6 +193,8 @@
 1. When you update props it triggers an automatic re-rendering
 1. When updating state, use setState instead of accessing values directly
    - Merges new values w/ original state
+1. You don't want to manage state in very many places
+   - Keep this limited to as few class components as possible
 
 ## Event Listeners
 
@@ -218,3 +220,52 @@
    	});
    };
    ```
+
+## Method References Between Components
+
+1. You can pass methods as properties between components
+
+   ```js
+   render() {
+      return (
+         <div className="App">
+            <h1>Hi, I'm a react app</h1>
+            <button onClick={() => this.switchNameHandler('Garrrrrry')}>
+               Switch Name
+            </button>
+            <Person
+               name={this.state.persons[0].name}
+               age={this.state.persons[0].age}
+               click={this.switchNameHandler.bind(this, 'Garrrry!')}
+            >
+               My Hobbies: Racing
+            </Person>
+            <Person
+               name={this.state.persons[1].name}
+               age={this.state.persons[1].age}
+            />
+            <Person
+               name={this.state.persons[2].name}
+               age={this.state.persons[2].age}
+            />
+         </div>
+      );
+   }
+   ```
+
+   ```js
+   const person = (props) => {
+   	return (
+   		<div>
+   			<p onClick={props.click}>
+   				I'm {props.name} and I am {props.age} years old!
+   			</p>
+   			<p>{props.children}</p>
+   		</div>
+   	);
+   };
+   ```
+
+1. Notice in the first snipped, we are using an arrow function and a bind function to pass switchNameHandler function
+   - Try to use bind as often as possible
+   - You may run into performance issues w/ arrow functions
