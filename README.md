@@ -269,3 +269,48 @@
 1. Notice in the first snipped, we are using an arrow function and a bind function to pass switchNameHandler function
    - Try to use bind as often as possible
    - You may run into performance issues w/ arrow functions
+
+## Two-way Binding
+
+1. Person.js
+
+   ```js
+   const person = (props) => {
+   	return (
+   		<div>
+   			<p onClick={props.click}>
+   				I'm {props.name} and I am {props.age} years old!
+   			</p>
+   			<p>{props.children}</p>
+   			<input type="text" onChange={props.changed} value={props.name} />
+   		</div>
+   	);
+   };
+
+   export default person;
+   ```
+
+   - Notice onChange and value
+
+1. App.js
+   - Handler
+   ```js
+   nameChangedHandler = (event) => {
+   	this.setState({
+   		persons: [
+   			{ name: 'Gary', age: 31 },
+   			{ name: event.target.value, age: 1 },
+   			{ name: 'Katie', age: 35 },
+   		],
+   	});
+   };
+   ```
+   - Person element
+   ```
+   <Person
+      name={this.state.persons[1].name}
+      age={this.state.persons[1].age}
+      changed={this.nameChangedHandler}
+   />
+   ```
+   - This allows us to type a value in the input field in the component and have it show up in the name filed
