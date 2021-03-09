@@ -458,3 +458,50 @@ if (this.state.showPersons) {
 
 1. [Conditional Rendering](https://reactjs.org/docs/conditional-rendering.html)
 1. [Lists & Keys](https://reactjs.org/docs/lists-and-keys.html)
+
+# Styling React Components & Elements
+
+1. You can style react elements with JS
+
+   ```js
+   const style = {
+   	backgroundColor: 'green',
+   	color: 'white',
+   	font: 'inherit',
+   	border: '1px solid blue',
+   	padding: '8px',
+   	cursor: 'pointer',
+   };
+
+   if (this.state.showPersons) {
+      ...
+      style.backgroundColor = 'red';
+   }
+   ```
+
+1. Setting class names dynamically
+
+   ```js
+   const classes = [];
+
+   if (this.state.persons.length <= 2) {
+   	classes.push('red');
+   }
+   if (this.state.persons.length <= 1) {
+   	classes.push('bold');
+   }
+
+   return (
+   	<div className="App">
+   		<h1>Hi, I'm a react app</h1>
+   		<p className={classes.join(' ')}>This is really working!</p>
+   		<button style={style} onClick={this.togglePersonsHandler}>
+   			Toggle Persons
+   		</button>
+
+   		{persons}
+   	</div>
+   );
+   ```
+
+## Radium
