@@ -36,7 +36,7 @@
    - Hooked into Webpack
 1. Use Development Server
 
-## Creating a React App
+# Creating a React App
 
 1. Run the below function to create the app
    ```
@@ -314,3 +314,49 @@
    />
    ```
    - This allows us to type a value in the input field in the component and have it show up in the name filed
+
+## Styling Components
+
+1. Scoped styles must be 'inline' styles
+
+   ```js
+   render() {
+         const style = {
+            backgroundColor: 'white',
+            font: 'inherit',
+            border: '1px solid blue',
+            padding: '8px',
+            cursor: 'pointer',
+         };
+
+         return (
+            <div className="App">
+               <h1>Hi, I'm a react app</h1>
+               <button
+                  style={style}
+                  onClick={() => this.switchNameHandler('Garrrrrry')}
+               >
+                  Switch Name
+               </button>
+            </div>
+         );
+      }
+   ```
+
+   - There are limitations to what can be done w/ css in this approach
+
+1. You can define a css file
+   - Global in scope
+   ```js
+   import './Person.css';
+   ```
+
+## Documentation
+
+1. [Create React App](https://github.com/facebook/create-react-app)
+1. [JSX](https://reactjs.org/docs/introducing-jsx.html)
+1. [Rendering Elements](https://reactjs.org/docs/rendering-elements.html)
+1. [Components and Props](https://reactjs.org/docs/components-and-props.html)
+1. [Listenable Events](https://reactjs.org/docs/events.html)
+
+# List and Conditionals
