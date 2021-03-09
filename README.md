@@ -433,3 +433,28 @@
    ```
 
    - Perferred way, much more elegant
+
+## Lists
+
+```js
+if (this.state.showPersons) {
+	persons = (
+		<div>
+			{this.state.persons.map((person, index) => {
+				return (
+					<Person
+						name={person.name}
+						age={person.age}
+						click={() => this.deletePersonHanlder(index)}
+					/>
+				);
+			})}
+		</div>
+	);
+}
+```
+
+## Documentation
+
+1. [Conditional Rendering](https://reactjs.org/docs/conditional-rendering.html)
+1. [Lists & Keys](https://reactjs.org/docs/lists-and-keys.html)
