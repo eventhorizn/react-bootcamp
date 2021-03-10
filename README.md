@@ -602,3 +602,4 @@ const StyledDiv = styled.div`
 ## CSS Modules
 
 1. If you don't like string blocks for styles (I don't) and you don't like the bastardization that Radium does (I don't), try CSS Modules
+1. First run npm eject
