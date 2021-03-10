@@ -563,3 +563,14 @@ npm install --save radium
    	},
    };
    ```
+
+## Styled Components
+
+[Link](https://styled-components.com/)
+
+```
+npm install --save styled-components
+```
+
+1. Alternative to Radium
+   - We will be deleting the Radium code we added
