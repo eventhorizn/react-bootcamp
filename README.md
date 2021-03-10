@@ -602,3 +602,15 @@ const StyledDiv = styled.div`
    <input type="text" onChange={props.changed} value={props.name} />
 </StyledDiv>
 ```
+
+# Components and React Internals
+
+## Stateless (Functional) and Stateful (Class-Based) Components
+
+![](images/class-based-vs-func-comp.png)
+
+## Component Lifecycle
+
+Class-based components only
+
+![](images/comp-lifecycle-creation.png)
