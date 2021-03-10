@@ -605,12 +605,25 @@ const StyledDiv = styled.div`
 
 # Components and React Internals
 
+Links below for lifecycle hooks
+
+1. [useEffect()](https://reactjs.org/docs/hooks-effect.html)
+   - Let you use state and other React features w/o writing a class
+1. [State and Lifecycle](https://reactjs.org/docs/state-and-lifecycle.html)
+1. [PropTypes](https://reactjs.org/docs/typechecking-with-proptypes.html)
+1. [Higher-Order Components](https://reactjs.org/docs/higher-order-components.html)
+1. [Refs and the DOM](https://reactjs.org/docs/refs-and-the-dom.html)
+
 ## Stateless (Functional) and Stateful (Class-Based) Components
 
 ![](images/class-based-vs-func-comp.png)
 
-## Component Lifecycle
+## Component Lifecycle Creation
 
 Class-based components only
 
 ![](images/comp-lifecycle-creation.png)
+
+## Component Lifecycle Update
+
+![](images/comp-lifecycle-update.png)
