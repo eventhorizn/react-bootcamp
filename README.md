@@ -627,3 +627,5 @@ Class-based components only
 ## Component Lifecycle Update
 
 ![](images/comp-lifecycle-update.png)
+
+# Burger Builder Basic
