@@ -461,6 +461,10 @@ if (this.state.showPersons) {
 
 # Styling React Components & Elements
 
+- I don't understand why we don't just use...unique identifiers for our classes?
+- We can still have separate css files, intellisense, etc
+- What's the point of this shit down below?
+
 1. You can style react elements with JS
 
    ```js
