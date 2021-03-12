@@ -633,3 +633,9 @@ Class-based components only
 1. For SPAs, you don't reach out to a server to get html pages
    - Instead you get JSON Data
 1. Multi-page apps works as expected w/ asking the server for pages
+1. To test against a server (for testing http/ajax)
+   - [JSON placeholder](https://jsonplaceholder.typicode.com/)
+1. axios
+   - Promise based http client
+1. Best place for an http request?
+   - componentDidMount hook
