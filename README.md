@@ -628,4 +628,8 @@ Class-based components only
 
 ![](images/comp-lifecycle-update.png)
 
-# Burger Builder Basic
+# React and HTTP/AJAX
+
+1. For SPAs, you don't reach out to a server to get html pages
+   - Instead you get JSON Data
+1. Multi-page apps works as expected w/ asking the server for pages
