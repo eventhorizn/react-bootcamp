@@ -639,3 +639,9 @@ Class-based components only
    - Promise based http client
 1. Best place for an http request?
    - componentDidMount hook
+
+## Adding to Burger Builder
+
+1. Using Firebase as our server/database
+   - [Firebase Link](https://console.firebase.google.com/u/1/)
+   - Using axios
