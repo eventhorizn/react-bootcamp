@@ -680,3 +680,9 @@ Class-based components only
    ```
 
 1. You don't have to create the orders 'table' beforehand
+
+# Routing
+
+Making a SPA feel like a MPA
+
+![](images/mpa-spa.png)
