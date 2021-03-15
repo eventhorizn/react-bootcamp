@@ -643,5 +643,40 @@ Class-based components only
 ## Adding to Burger Builder
 
 1. Using Firebase as our server/database
-   - [Firebase Link](https://console.firebase.google.com/u/1/)
-   - Using axios
+1. [Firebase Link](https://console.firebase.google.com/u/1/)
+1. Using axios
+   ```js
+   const instance = axios.create({
+   	baseURL: 'firebaseUrl',
+   });
+   ```
+1. Firebase is like using mongo as an api
+
+   ```js
+   const order = {
+   	ingredients: this.state.ingredients,
+   	price: this.state.totalPrice,
+   	customer: {
+   		name: 'Gary Hake',
+   		address: {
+   			stree: 'Teststreet 1',
+   			zipCode: '40223',
+   			country: 'America',
+   		},
+   		email: 'test@test.com',
+   	},
+   	deliveryMethod: 'fastest',
+   };
+
+   axios
+   	.post('/orders.json', order)
+   	.then(() => {
+   		this.setState({ loading: false, purchasing: false });
+   	})
+   	.catch((err) => {
+   		this.setState({ loading: false, purchasing: false });
+   		console.log(err);
+   	});
+   ```
+
+1. You don't have to create the orders 'table' beforehand
