@@ -686,3 +686,34 @@ Class-based components only
 Making a SPA feel like a MPA
 
 ![](images/mpa-spa.png)
+
+1. Install router package
+   ```
+   npm install --save react-router react-router-dom
+   ```
+   - Not created by fb, but de-facto pkg for routing
+   - Actually don't need react-router, react-router-dom wraps react-router
+1. Using the router package
+
+   - app.js or index.js
+
+   ```js
+   import React, { Component } from 'react';
+   import { BrowserRouter } from 'react-router-dom';
+
+   import Blog from './containers/Blog/Blog';
+
+   class App extends Component {
+   	render() {
+   		return (
+   			<BrowserRouter>
+   				<div className="App">
+   					<Blog />
+   				</div>
+   			</BrowserRouter>
+   		);
+   	}
+   }
+
+   export default App;
+   ```
