@@ -725,3 +725,26 @@ Making a SPA feel like a MPA
    ```
 
    - exact makes the url match the path exaclty
+
+1. Query Parameters
+
+   ```js
+   <Link to="/my-path?start=5">Go to Start</Link>
+
+   <Link
+      to={{
+         pathname: '/my-path',
+         search: '?start=5'
+      }}
+      >Go to Start
+   </Link>
+   ```
+
+   ```js
+   componentDidMount() {
+      const query = new URLSearchParams(this.props.location.search);
+      for (let param of query.entries()) {
+         console.log(param); // yields ['start', '5']
+      }
+   }
+   ```
