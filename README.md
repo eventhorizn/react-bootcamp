@@ -717,3 +717,11 @@ Making a SPA feel like a MPA
 
    export default App;
    ```
+
+1. Create Route element
+
+   ```js
+   <Route path="/" exact render={() => <h1>Home</h1>} />
+   ```
+
+   - exact makes the url match the path exaclty
