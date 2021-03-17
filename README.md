@@ -687,6 +687,8 @@ Making a SPA feel like a MPA
 
 ![](images/mpa-spa.png)
 
+[React Router](https://reactrouter.com/web/guides/quick-start)
+
 1. Install router package
    ```
    npm install --save react-router react-router-dom
