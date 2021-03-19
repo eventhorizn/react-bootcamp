@@ -18,7 +18,12 @@ const INGREDIENT_PRICES = {
 
 class BurgerBuilder extends Component {
 	state = {
-		ingredients: null,
+		ingredients: {
+			salad: 0,
+			bacon: 0,
+			cheese: 0,
+			meat: 0,
+		},
 		totalPrice: 4,
 		purchasable: false,
 		purchasing: false,
@@ -26,18 +31,20 @@ class BurgerBuilder extends Component {
 		error: false,
 	};
 
-	componentDidMount() {
-		axios
-			.get(
-				'https://react-my-burger-ad68f-default-rtdb.firebaseio.com/ingredients.json'
-			)
-			.then((response) => {
-				this.setState({ ingredients: response.data });
-			})
-			.catch((err) => {
-				this.setState({ error: true });
-			});
-	}
+	// firebase orders alphabetically
+	// componentDidMount() {
+	// 	axios
+	// 		.get(
+	// 			'https://react-my-burger-ad68f-default-rtdb.firebaseio.com/ingredients.json'
+	// 		)
+	// 		.then((response) => {
+	// 			console.log(response.data);
+	// 			this.setState({ ingredients: response.data });
+	// 		})
+	// 		.catch((err) => {
+	// 			this.setState({ error: true });
+	// 		});
+	// }
 
 	updatePurchaseState(ingredients) {
 		const sum = Object.keys(ingredients)
@@ -99,30 +106,6 @@ class BurgerBuilder extends Component {
 	};
 
 	purchaseContinueHandler = () => {
-		// this.setState({ loading: true });
-		// const order = {
-		// 	ingredients: this.state.ingredients,
-		// 	price: this.state.totalPrice,
-		// 	customer: {
-		// 		name: 'Gary Hake',
-		// 		address: {
-		// 			stree: 'Teststreet 1',
-		// 			zipCode: '40223',
-		// 			country: 'America',
-		// 		},
-		// 		email: 'test@test.com',
-		// 	},
-		// 	deliveryMethod: 'fastest',
-		// };
-		// axios
-		// 	.post('/orders.json', order)
-		// 	.then(() => {
-		// 		this.setState({ loading: false, purchasing: false });
-		// 	})
-		// 	.catch((err) => {
-		// 		this.setState({ loading: false, purchasing: false });
-		// 		console.log(err);
-		// 	});
 		const queryParams = [];
 		for (let i in this.state.ingredients) {
 			queryParams.push(
@@ -131,6 +114,8 @@ class BurgerBuilder extends Component {
 					encodeURIComponent(this.state.ingredients[i])
 			);
 		}
+
+		queryParams.push('price=' + this.state.totalPrice);
 
 		const queryString = queryParams.join('&');
 
