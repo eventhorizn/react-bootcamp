@@ -4,6 +4,14 @@ import styles from './Burger.module.css';
 import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
 
 const burger = (props) => {
+	// const ingredients = [];
+	// for (let ingredientName in props.ingredients) {
+	// 	ingredients.push({
+	// 		name: ingredientName,
+	// 		amount: props.ingredients[ingredientName],
+	// 	});
+	// }
+
 	// this is a stupid complicated function
 	let ingredients = Object.keys(props.ingredients)
 		.map((igKey) => {
