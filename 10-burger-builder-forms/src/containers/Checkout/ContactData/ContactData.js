@@ -16,14 +16,24 @@ class ConctactData extends Component {
 					placeholder: 'Your Name',
 				},
 				value: '',
+				validation: {
+					required: true,
+				},
+				valid: false,
+				touched: false,
 			},
-			MediaStreamAudioDestinationNode: {
+			street: {
 				elementType: 'input',
 				elementConfig: {
 					type: 'text',
 					placeholder: 'Street',
 				},
 				value: '',
+				validation: {
+					required: true,
+				},
+				valid: false,
+				touched: false,
 			},
 			zipCode: {
 				elementType: 'input',
@@ -32,6 +42,13 @@ class ConctactData extends Component {
 					placeholder: 'Zip',
 				},
 				value: '',
+				validation: {
+					required: true,
+					minLength: 5,
+					maxLength: 5,
+				},
+				valid: false,
+				touched: false,
 			},
 			country: {
 				elementType: 'input',
@@ -40,6 +57,11 @@ class ConctactData extends Component {
 					placeholder: 'Country',
 				},
 				value: '',
+				validation: {
+					required: true,
+				},
+				valid: false,
+				touched: false,
 			},
 			email: {
 				elementType: 'input',
@@ -48,6 +70,11 @@ class ConctactData extends Component {
 					placeholder: 'Your E-Mail',
 				},
 				value: '',
+				validation: {
+					required: true,
+				},
+				valid: false,
+				touched: false,
 			},
 			deliveryMethod: {
 				elementType: 'select',
@@ -57,7 +84,7 @@ class ConctactData extends Component {
 						{ value: 'cheapest', displayValue: 'Cheapest' },
 					],
 				},
-				value: '',
+				value: 'fastest',
 			},
 		},
 		loading: false,
@@ -67,10 +94,20 @@ class ConctactData extends Component {
 		event.preventDefault();
 
 		this.setState({ loading: true });
+
+		const formData = {};
+		for (let formElIdentifier in this.state.orderForm) {
+			formData[formElIdentifier] = this.state.orderForm[formElIdentifier].value;
+		}
+
 		const order = {
 			ingredients: this.props.ingredients,
 			price: this.props.price,
+			orderData: formData,
 		};
+
+		console.log(order);
+
 		axios
 			.post('/orders.json', order)
 			.then(() => {
@@ -81,6 +118,41 @@ class ConctactData extends Component {
 				this.setState({ loading: false });
 				console.log(err);
 			});
+	};
+
+	checkValidation(value, rules) {
+		let isValid = true;
+
+		if (rules.required) {
+			isValid = value.trim() !== '' && isValid;
+		}
+
+		if (rules.minLength) {
+			isValid = value.length >= rules.minLength && isValid;
+		}
+
+		if (rules.maxLength) {
+			isValid = value.length <= rules.maxLength && isValid;
+		}
+
+		return isValid;
+	}
+
+	inputChangedHandler = (event, inputIdentifier) => {
+		const updatedOrderForm = {
+			...this.state.orderForm,
+		};
+
+		const updatedFormElement = { ...updatedOrderForm[inputIdentifier] };
+		updatedFormElement.value = event.target.value;
+		updatedFormElement.valid = this.checkValidation(
+			updatedFormElement.value,
+			updatedFormElement.validation
+		);
+		updatedFormElement.touched = true;
+		updatedOrderForm[inputIdentifier] = updatedFormElement;
+
+		this.setState({ orderForm: updatedOrderForm });
 	};
 
 	render() {
@@ -94,13 +166,17 @@ class ConctactData extends Component {
 		}
 
 		let form = (
-			<form>
+			<form onSubmit={this.orderHandler}>
 				{formElementsArray.map((formEl) => (
 					<Input
 						key={formEl.id}
 						elementType={formEl.config.elementType}
 						elementConfig={formEl.config.elementConfig}
 						value={formEl.config.value}
+						invalid={!formEl.config.valid}
+						shouldValidate={formEl.config.validation}
+						touched={formEl.config.touched}
+						changed={(event) => this.inputChangedHandler(event, formEl.id)}
 					/>
 				))}
 
