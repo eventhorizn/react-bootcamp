@@ -85,8 +85,11 @@ class ConctactData extends Component {
 					],
 				},
 				value: 'fastest',
+				validation: {},
+				valid: true,
 			},
 		},
+		formIsValid: false,
 		loading: false,
 	};
 
@@ -105,8 +108,6 @@ class ConctactData extends Component {
 			price: this.props.price,
 			orderData: formData,
 		};
-
-		console.log(order);
 
 		axios
 			.post('/orders.json', order)
@@ -145,14 +146,22 @@ class ConctactData extends Component {
 
 		const updatedFormElement = { ...updatedOrderForm[inputIdentifier] };
 		updatedFormElement.value = event.target.value;
+
 		updatedFormElement.valid = this.checkValidation(
 			updatedFormElement.value,
 			updatedFormElement.validation
 		);
+
 		updatedFormElement.touched = true;
 		updatedOrderForm[inputIdentifier] = updatedFormElement;
 
-		this.setState({ orderForm: updatedOrderForm });
+		let formIsValid = true;
+
+		for (let inputIdentifier in updatedOrderForm) {
+			formIsValid = updatedOrderForm[inputIdentifier].valid && formIsValid;
+		}
+
+		this.setState({ orderForm: updatedOrderForm, formIsValid: formIsValid });
 	};
 
 	render() {
@@ -180,7 +189,11 @@ class ConctactData extends Component {
 					/>
 				))}
 
-				<Button btnType="Success" clicked={this.orderHandler}>
+				<Button
+					btnType="Success"
+					disabled={!this.state.formIsValid}
+					clicked={this.orderHandler}
+				>
 					Order
 				</Button>
 			</form>

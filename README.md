@@ -788,3 +788,63 @@ Making a SPA feel like a MPA
    	return import('./NewPost/NewPost');
    });
    ```
+
+# Forms and Validation
+
+React doesn't have its own built in validation, so you have to write your own, or include a separate package
+
+1. [Validate.js](https://validatejs.org/)
+1. [React-Validation](https://www.npmjs.com/package/react-validation)
+1. [Validation Ideas](https://react.rocks/tag/Validation)
+
+## Manual Approach
+
+1. State Object
+   ```js
+   email: {
+      elementType: 'input',
+      elementConfig: {
+         type: 'email',
+         placeholder: 'Your E-Mail',
+      },
+      value: '',
+      validation: {
+         required: true,
+      },
+      valid: false,
+      touched: false,
+   },
+   ```
+1. Validation Function
+
+   ```js
+   checkValidation(value, rules) {
+   	let isValid = true;
+
+   	if (rules.required) {
+   		isValid = value.trim() !== '' && isValid;
+   	}
+
+   	if (rules.minLength) {
+   		isValid = value.length >= rules.minLength && isValid;
+   	}
+
+   	if (rules.maxLength) {
+   		isValid = value.length <= rules.maxLength && isValid;
+   	}
+
+   	return isValid;
+   }
+   ```
+
+1. Inside input changed handler
+
+   ```js
+   for (let inputIdentifier in updatedOrderForm) {
+   	formIsValid = updatedOrderForm[inputIdentifier].valid && formIsValid;
+   }
+
+   this.setState({ orderForm: updatedOrderForm, formIsValid: formIsValid });
+   ```
+
+In general when you create a form with input fields, you need to validate them somehow!
