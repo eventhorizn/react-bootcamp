@@ -848,3 +848,13 @@ React doesn't have its own built in validation, so you have to write your own, o
    ```
 
 In general when you create a form with input fields, you need to validate them somehow!
+
+# Redux
+
+1. Stand-alone 3rd party library
+1. Often used with React
+1. Makes state management easier
+1. Uses a central store for state
+   - Stores entire app state
+
+![](images/redux-flow.png)
