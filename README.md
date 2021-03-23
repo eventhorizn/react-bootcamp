@@ -858,3 +858,27 @@ In general when you create a form with input fields, you need to validate them s
    - Stores entire app state
 
 ![](images/redux-flow.png)
+
+1. To use redux in react you need two packages
+
+   ```
+   npm install --save redux
+   npm install --save react-redux
+   ```
+
+   - redux is standalone, but react-redux lets you hook them together
+
+   ```js
+   import { createStore } from 'redux';
+   import { Provider } from 'react-redux';
+   import reducer from './store/reducer';
+
+   const store = createStore(reducer);
+
+   ReactDOM.render(
+   	<Provider store={store}>
+   		<App />
+   	</Provider>,
+   	document.getElementById('root')
+   );
+   ```
