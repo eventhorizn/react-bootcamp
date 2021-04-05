@@ -882,3 +882,9 @@ In general when you create a form with input fields, you need to validate them s
    	document.getElementById('root')
    );
    ```
+
+## Immutable Update Patterns
+
+[Official Documentation](https://redux.js.org/recipes/structuring-reducers/immutable-update-patterns/)
+
+Ultimately we don't want to update state directly. Instead we want to copy, update, then set
