@@ -888,3 +888,14 @@ In general when you create a form with input fields, you need to validate them s
 [Official Documentation](https://redux.js.org/recipes/structuring-reducers/immutable-update-patterns/)
 
 Ultimately we don't want to update state directly. Instead we want to copy, update, then set
+
+## When to Use Redux
+
+![](images/redux-state.png)
+
+## Documentation
+
+1. [Redux Docs](https://redux.js.org/)
+1. [Core Concepts](https://redux.js.org/introduction/core-concepts)
+1. [Actions](https://redux.js.org/tutorials/fundamentals/part-2-concepts-data-flow)
+1. [Reducers](https://redux.js.org/tutorials/fundamentals/part-3-state-actions-reducers)
