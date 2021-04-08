@@ -895,19 +895,6 @@ Ultimately we don't want to update state directly. Instead we want to copy, upda
 
 ![](images/redux-state.png)
 
-## Documentation
-
-1. [Redux Docs](https://redux.js.org/)
-1. [Core Concepts](https://redux.js.org/introduction/core-concepts)
-1. [Actions](https://redux.js.org/tutorials/fundamentals/part-2-concepts-data-flow)
-1. [Reducers](https://redux.js.org/tutorials/fundamentals/part-3-state-actions-reducers)
-
-## Async Actions
-
-1. [Redux Thunk](https://github.com/reduxjs/redux-thunk)
-   - Actions return a function that will eventually dispatch a function
-   - 'eventually' = async
-
 ## Data Transforming Logic
 
 ![](images/data-trans-logic.png)
@@ -915,3 +902,16 @@ Ultimately we don't want to update state directly. Instead we want to copy, upda
 1. Should be in reducer
 1. Could put in action
 1. Be consistent no matter which path you take
+
+## Documentation
+
+1. [Redux Docs](https://redux.js.org/)
+1. [Core Concepts](https://redux.js.org/introduction/core-concepts)
+1. [Actions](https://redux.js.org/tutorials/fundamentals/part-2-concepts-data-flow)
+1. [Reducers](https://redux.js.org/tutorials/fundamentals/part-3-state-actions-reducers)
+1. [Middleware](https://redux.js.org/tutorials/fundamentals/part-4-store#middleware)
+1. [Redux Thunk](https://github.com/reduxjs/redux-thunk)
+   - Async actions
+   - Actions return a function that will eventually dispatch a function
+   - 'eventually' = async
+1. [Async Actions](https://redux.js.org/tutorials/fundamentals/part-6-async-logic)
