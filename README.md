@@ -883,6 +883,8 @@ In general when you create a form with input fields, you need to validate them s
    );
    ```
 
+1. [Redux DevTools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en)
+
 ## Immutable Update Patterns
 
 [Official Documentation](https://redux.js.org/recipes/structuring-reducers/immutable-update-patterns/)
