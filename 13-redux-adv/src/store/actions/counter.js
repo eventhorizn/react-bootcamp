@@ -21,7 +21,7 @@ export const add = (value) => {
 
 export const subract = (value) => {
 	return {
-		type: actionTypes.INCREMENT,
+		type: actionTypes.SUBTRACT,
 		val: value,
 	};
 };
