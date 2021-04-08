@@ -901,3 +901,9 @@ Ultimately we don't want to update state directly. Instead we want to copy, upda
 1. [Core Concepts](https://redux.js.org/introduction/core-concepts)
 1. [Actions](https://redux.js.org/tutorials/fundamentals/part-2-concepts-data-flow)
 1. [Reducers](https://redux.js.org/tutorials/fundamentals/part-3-state-actions-reducers)
+
+## Async Actions
+
+1. [Redux Thunk](https://github.com/reduxjs/redux-thunk)
+   - Actions return a function that will eventually dispatch a function
+   - 'eventually' = async
