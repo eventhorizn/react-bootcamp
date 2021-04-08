@@ -907,3 +907,11 @@ Ultimately we don't want to update state directly. Instead we want to copy, upda
 1. [Redux Thunk](https://github.com/reduxjs/redux-thunk)
    - Actions return a function that will eventually dispatch a function
    - 'eventually' = async
+
+## Data Transforming Logic
+
+![](images/data-trans-logic.png)
+
+1. Should be in reducer
+1. Could put in action
+1. Be consistent no matter which path you take
