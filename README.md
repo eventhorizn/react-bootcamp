@@ -915,3 +915,5 @@ Ultimately we don't want to update state directly. Instead we want to copy, upda
    - Actions return a function that will eventually dispatch a function
    - 'eventually' = async
 1. [Async Actions](https://redux.js.org/tutorials/fundamentals/part-6-async-logic)
+
+# Testing React Apps
