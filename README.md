@@ -917,3 +917,9 @@ Ultimately we don't want to update state directly. Instead we want to copy, upda
 1. [Async Actions](https://redux.js.org/tutorials/fundamentals/part-6-async-logic)
 
 # Testing React Apps
+
+1. Test Runner
+   - [Jest](https://jestjs.io/docs/tutorial-react)
+1. Test Utilities (Simulate React App)
+   - React Test Utils
+   - [Enzyme](https://enzymejs.github.io/enzyme/)
