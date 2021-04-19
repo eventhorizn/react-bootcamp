@@ -923,3 +923,32 @@ Ultimately we don't want to update state directly. Instead we want to copy, upda
 1. Test Utilities (Simulate React App)
    - React Test Utils
    - [Enzyme](https://enzymejs.github.io/enzyme/)
+
+# Hosting
+
+1. [Firebase Hosting]
+1. Install Firebase
+   ```
+   npm install -g firebase-tools
+   ```
+1. Login
+   ```
+   firebase login
+   ```
+1. Init
+   ```
+   firebase init
+   ```
+   - Choose hosting
+1. 'What do you want to use as your public directory'
+   - build
+1. 'Configure as a single page app?'
+   - yes
+1. 'Automatic builds and deploys w/ GitHub'
+   - Whichever
+1. 'File build/index.html already exists. Ovewrite?'
+   - No
+1. Deploy
+   ```
+   firebase deploy
+   ```
