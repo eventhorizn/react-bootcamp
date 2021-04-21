@@ -952,3 +952,7 @@ Ultimately we don't want to update state directly. Instead we want to copy, upda
    ```
    firebase deploy
    ```
+
+# React Transitions
+
+1. [React Transition Group](https://reactcommunity.org/react-transition-group/)
