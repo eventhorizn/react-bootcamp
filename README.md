@@ -955,4 +955,22 @@ Ultimately we don't want to update state directly. Instead we want to copy, upda
 
 # React Transitions
 
+1. [CSS Transitions](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions)
+1. [CSS Animations](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations/Using_CSS_animations)
 1. [React Transition Group](https://reactcommunity.org/react-transition-group/)
+   - What we use in the course
+1. [React Motion](https://github.com/chenglou/react-motion)
+1. [React Move](https://react-move.js.org/#/)
+
+# React Hooks
+
+1. Allows you to use state with functional components
+1. You don't need class based components anymore
+1. React 'Hooks' are js functions
+   - Can only be used from inside functional components or other Hooks
+   - named 'useXYZ()'
+1. Hooks are highly re-usable and independent for each component
+1. Hooks also allow you to share logic across components
+   - Can even be stateful
+1. Nothing to do w/ Lifecycle Hooks
+   - Restricted to class based components
