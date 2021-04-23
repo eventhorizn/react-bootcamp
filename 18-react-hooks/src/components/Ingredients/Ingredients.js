@@ -8,10 +8,23 @@ function Ingredients() {
 	const [ing, setIng] = useState([]);
 
 	const addIngredientHandler = (ingredient) => {
-		setIng((prevIng) => [
-			...prevIng,
-			{ id: Math.random().toString(), ...ingredient },
-		]);
+		fetch(
+			'https://react-hooks-update-eaf4b-default-rtdb.firebaseio.com/ingredients.json',
+			{
+				method: 'POST',
+				body: JSON.stringify(ingredient),
+				headers: { 'Content-Type': 'application/json' },
+			}
+		)
+			.then((response) => {
+				return response.json();
+			})
+			.then((responseData) => {
+				setIng((prevIng) => [
+					...prevIng,
+					{ id: responseData.name, ...ingredient },
+				]);
+			});
 	};
 
 	const removeIngredientHandler = (ingredientId) => {
