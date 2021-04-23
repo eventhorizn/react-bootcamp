@@ -59,7 +59,14 @@ function Ingredients() {
 	};
 
 	const removeIngredientHandler = (ingredientId) => {
-		setIng((prevIng) => prevIng.filter((ing) => ing.id !== ingredientId));
+		fetch(
+			`https://react-hooks-update-eaf4b-default-rtdb.firebaseio.com/ingredients/${ingredientId}.json`,
+			{
+				method: 'DELETE',
+			}
+		).then(() => {
+			setIng((prevIng) => prevIng.filter((ing) => ing.id !== ingredientId));
+		});
 	};
 
 	return (
