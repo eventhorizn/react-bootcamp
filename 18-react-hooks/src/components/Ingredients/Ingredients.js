@@ -36,7 +36,14 @@ const ingredientReducer = (currentIngredients, action) => {
 
 function Ingredients() {
 	const [ing, dispatch] = useReducer(ingredientReducer, []);
-	const { isLoading, error, data, sendRequest } = useHttp();
+	const {
+		isLoading,
+		error,
+		data,
+		sendRequest,
+		reqExtra,
+		reqIdentifier,
+	} = useHttp();
 
 	// const [httpState, dispatchHttp] = useReducer(httpReducer, {
 	// 	loading: false,
@@ -48,47 +55,67 @@ function Ingredients() {
 	//const [error, setError] = useState();
 
 	useEffect(() => {
-		console.log('RENDERING INGREDIENTS', ing);
-	}, [ing]);
+		if (!isLoading && !error && reqIdentifier === 'REMOVE_INGREDIENT') {
+			dispatch({ type: 'DELETE', id: reqExtra });
+		} else if (!isLoading && !error && reqIdentifier === 'ADD_INGREDIENT') {
+			dispatch({
+				type: 'ADD',
+				ingredient: { id: data.name, ...reqExtra },
+			});
+		}
+	}, [data, reqExtra, reqIdentifier, isLoading, error]);
 
 	const filteredIngredientsHandler = useCallback((filterIngredients) => {
 		//setIng(filterIngredients);
 		dispatch({ type: 'SET', ingredients: filterIngredients });
 	}, []);
 
-	const addIngredientHandler = useCallback((ingredient) => {
-		//setIsLoading(true);
-		// dispatchHttp({ type: 'SEND' });
-		// fetch(
-		// 	'https://react-hooks-update-eaf4b-default-rtdb.firebaseio.com/ingredients.json',
-		// 	{
-		// 		method: 'POST',
-		// 		body: JSON.stringify(ingredient),
-		// 		headers: { 'Content-Type': 'application/json' },
-		// 	}
-		// )
-		// 	.then((response) => {
-		// 		//setIsLoading(false);
-		// 		dispatchHttp({ type: 'RESPONSE' });
-		// 		return response.json();
-		// 	})
-		// 	.then((responseData) => {
-		// 		dispatch({
-		// 			type: 'ADD',
-		// 			ingredient: { id: responseData.name, ...ingredient },
-		// 		});
-		// 		// setIng((prevIng) => [
-		// 		// 	...prevIng,
-		// 		// 	{ id: responseData.name, ...ingredient },
-		// 		// ]);
-		// 	});
-	}, []);
+	const addIngredientHandler = useCallback(
+		(ingredient) => {
+			sendRequest(
+				'https://react-hooks-update-eaf4b-default-rtdb.firebaseio.com/ingredients.json',
+				'POST',
+				JSON.stringify(ingredient),
+				ingredient,
+				'ADD_INGREDIENT'
+			);
+			//setIsLoading(true);
+			// dispatchHttp({ type: 'SEND' });
+			// fetch(
+			// 	'https://react-hooks-update-eaf4b-default-rtdb.firebaseio.com/ingredients.json',
+			// 	{
+			// 		method: 'POST',
+			// 		body: JSON.stringify(ingredient),
+			// 		headers: { 'Content-Type': 'application/json' },
+			// 	}
+			// )
+			// 	.then((response) => {
+			// 		//setIsLoading(false);
+			// 		dispatchHttp({ type: 'RESPONSE' });
+			// 		return response.json();
+			// 	})
+			// 	.then((responseData) => {
+			// 		dispatch({
+			// 			type: 'ADD',
+			// 			ingredient: { id: responseData.name, ...ingredient },
+			// 		});
+			// 		// setIng((prevIng) => [
+			// 		// 	...prevIng,
+			// 		// 	{ id: responseData.name, ...ingredient },
+			// 		// ]);
+			// 	});
+		},
+		[sendRequest]
+	);
 
 	const removeIngredientHandler = useCallback(
 		(ingredientId) => {
 			sendRequest(
 				`https://react-hooks-update-eaf4b-default-rtdb.firebaseio.com/ingredients/${ingredientId}.json`,
-				'DELETE'
+				'DELETE',
+				null,
+				ingredientId,
+				'REMOVE_INGREDIENT'
 			);
 			//setIsLoading(true);
 			//dispatchHttp({ type: 'SEND' });
